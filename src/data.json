@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": "178",
+      "singular": "Apple",
+      "plural": "Apples",
+      "description": "The apple is one of the pome (fleshy) fruits. Apples at harvest vary widely in size, shape, colour, and acidity, but most are fairly round and some shade of red or yellow. The thousands of varieties fall into three broad classes: cider, cooking, and dessert varieties.",
+      "baseStock": 6,
+      "currentStock": 6,
+      "price": 2,
+      "image": "apple.png"
+    },
+    {
+      "id": "763",
+      "singular": "Orange",
+      "plural": "Oranges",
+      "description": "Oranges are citrus fruits with fragrant, leathery skin and juicy flesh. The most common types are the sweet (or common) orange, the sour (or Seville) orange, and the mandarin orange.",
+      "baseStock": 1,
+      "currentStock": 1,
+      "price": 1.5,
+      "image": "orange.png"
+    },
+    {
+      "id": "226",
+      "singular": "Mango",
+      "plural": "Mangoes",
+      "description": "A mango is a sweet tropical fruit, and it's also the name of the trees on which the fruit grows. Ripe mangoes are juicy, fleshy, and delicious. Like peaches and plums, mangoes have an inedible pit at the center. Unlike these other fruits, the skin of a mango is very tough and also inedible.",
+      "baseStock": 0,
+      "currentStock": 0,
+      "price": 5,
+      "image": "mango.png"
+    }
+  ]
+}
