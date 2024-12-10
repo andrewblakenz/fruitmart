@@ -60,7 +60,7 @@ const ProductPage = () => {
     if (currQuantity < product!.currentStock) {
       setQuantity(currQuantity + 1);
     } else {
-      toast.error(`You have reached the maximum amount of ${product?.plural} for this order.`);
+      toast.error(`You have reached the maximum amount of ${product!.plural} for this order.`);
     }
   };
 
