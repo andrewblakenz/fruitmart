@@ -27,7 +27,7 @@ const ProductPage = () => {
     if (productID && products) {
       let newProduct = products.find((p) => p.id === productID) as Product;
       setProduct(newProduct);
-      if (newProduct?.currentStock < 1) {
+      if (newProduct.currentStock < 1) {
         setQuantity(0);
       }
     }
