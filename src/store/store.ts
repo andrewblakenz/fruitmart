@@ -10,6 +10,10 @@ type StoredState = {
 const clearStateMiddleware = (store) => (next) => (action) => {
   const result = next(action);
   if (action.type === "cart/addToCart") {
+    store.dispatch({
+      type: "cart/setCartTimer",
+      payload: { expiration: Date.now() + 5 * 60 * 1000 },
+    });
     setTimeout(() => {
       const state = (store.getState() as RootState).cartReducer;
       let cartItems = state.cart;
@@ -21,6 +25,9 @@ const clearStateMiddleware = (store) => (next) => (action) => {
         });
       });
       store.dispatch({ type: "cart/clearCart" });
+      store.dispatch({
+        type: "cart/clearCartTimer",
+      });
     }, 5 * 60 * 1000);
   }
 

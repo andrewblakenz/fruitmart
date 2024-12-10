@@ -34,6 +34,9 @@ const ProductPage = () => {
   }, [productID, products]);
 
   const onAddToCart = (product: Product, quantity: number) => {
+    if (product.currentStock < 1) {
+      return;
+    }
     let newCartProduct = {
       id: product.id,
       plural: product.plural,
@@ -60,7 +63,7 @@ const ProductPage = () => {
     if (currQuantity < product!.currentStock) {
       setQuantity(currQuantity + 1);
     } else {
-      toast.error(`You have reached the maximum amount of ${product!.plural} for this order.`);
+      toast.error(`You have reached the maximum quantity of ${product!.plural} available for this order.`);
     }
   };
 
@@ -97,8 +100,8 @@ const ProductPage = () => {
             <p>+</p>
           </div>
         </div>
-        <div className="button" onClick={() => onAddToCart(product, quantity)}>
-          Add to cart
+        <div className="button button--disabled" onClick={() => onAddToCart(product, quantity)}>
+          {product && product.currentStock >= 1 ? "Add to cart" : "Out of stock"}
         </div>
       </div>
       <Toaster

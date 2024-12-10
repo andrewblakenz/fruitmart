@@ -18,6 +18,8 @@ const CartPage = () => {
 
   const products = useSelector((state: RootState) => state.catalogueReducer.catalogue);
   const cartItems = useSelector((state: RootState) => state.cartReducer.cart);
+  const cartExpiration = useSelector((state: RootState) => state.cartReducer.timer);
+  console.log(cartExpiration);
   const dispatch = useDispatch();
 
   const handleIncrease = (pID: string) => {
@@ -113,10 +115,13 @@ const CartPage = () => {
         <Link className="button button--secondary" to={"/shop"}>
           Continue Shopping
         </Link>
-        <p className="cart-disclaimer">
-          Please note, as our stock is in high demand, you have 5 minutes from adding an item to the cart to make
-          purchase, or your cart will be emptied. Thank you for understanding.
-        </p>
+
+        {cartExpiration && (
+          <p className="cart-disclaimer">
+            Due to our fruit being in high demand, please ensure you purchase the items in your cart within 5 minutes.
+            Your current cart will expire at {new Date(cartExpiration).toLocaleTimeString("en-NZ")}
+          </p>
+        )}
       </div>
       <Toaster
         position="bottom-center"

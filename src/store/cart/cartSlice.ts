@@ -4,11 +4,12 @@ import CartProduct from "../../types/CartProduct";
 
 export interface CartState {
   cart: CartProduct[];
+  timer: null | Date;
 }
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: { cart: [] } as CartState,
+  initialState: { cart: [], timer: null } as CartState,
   reducers: {
     addToCart: (state, action) => {
       const cartItem = state.cart.find((item) => item.id === action.payload.product.id);
@@ -44,6 +45,14 @@ const cartSlice = createSlice({
       if (item && item.inCart !== undefined && item.inCart >= 1) {
         item.inCart--;
       }
+    },
+    setCartTimer: (state, action) => {
+      if (!state.timer) {
+        state.timer = action.payload.expiration;
+      }
+    },
+    clearCartTimer: (state, action) => {
+      state.timer = null;
     },
   },
 });
